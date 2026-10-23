@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moon Travel | Agencia de viajes premium</title>
+  <meta name="description" content="Moon Travel: vuelos, hoteles y paquetes todo incluido, planeados por expertos para que viajes sin complicaciones." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 950: '#0A1730', 900: '#0F2147', 800: '#16306A', 100: '#E6ECF7', 50: '#F4F7FC' },
+            gold: '#C8A45C'
+          },
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+
+<body class="font-sans text-navy-950 bg-white antialiased">
+
+  <!-- 1. NAVBAR -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur border-b border-navy-100">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-8 h-16" aria-label="Principal">
+      <a href="#inicio" class="font-display text-xl sm:text-2xl font-semibold text-navy-900 tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800 rounded">
+        Moon Travel
+      </a>
+      <a href="https://wa.me/50200000000?text=Hola%20Moon%20Travel%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20viaje"
+         target="_blank" rel="noopener"
+         class="inline-flex items-center rounded-full bg-navy-900 px-5 py-2 text-sm font-medium text-white transition hover:bg-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-navy-800">
+        Contáctanos
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 2. HERO -->
+    <section id="inicio" class="relative isolate overflow-hidden bg-navy-950 pt-16">
+      <!-- Placeholder imagen de fondo: reemplaza la URL por tu foto (ej. images/hero.jpg) -->
+      <div class="absolute inset-0 -z-20 bg-cover bg-center"
+           style="background-image:url('/airline_wing.jpg');"
+           role="img" aria-label="Imagen de fondo de viajes (placeholder)"></div>
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/40"></div>
+
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 py-24 sm:py-32 lg:py-44">
+        <div class="max-w-2xl">
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.08] text-white">
+            Tu próximo destino, sin complicaciones
+          </h1>
+          <p class="mt-6 text-base sm:text-lg leading-relaxed text-navy-100/90 max-w-xl">
+            Nos encargamos de los vuelos, el hospedaje y cada detalle del itinerario. Tú solo elige a dónde ir y disfruta el camino con la tranquilidad de viajar acompañado.
+          </p>
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a href="https://wa.me/50200000000?text=Hola%20Moon%20Travel%2C%20quiero%20cotizar%20mi%20viaje"
+               target="_blank" rel="noopener"
+               class="inline-flex justify-center items-center rounded-full bg-white px-8 py-4 text-base font-semibold text-navy-900 shadow-lg transition hover:bg-navy-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950 focus-visible:ring-white">
+              Cotiza tu viaje
+            </a>
+            <a href="#servicios"
+               class="inline-flex justify-center items-center rounded-full border border-white/40 px-8 py-4 text-base font-medium text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+              Ver servicios
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SERVICIOS -->
+    <section id="servicios" class="bg-navy-50 py-20 sm:py-28">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="max-w-2xl">
+          <h2 class="font-display text-3xl sm:text-4xl font-semibold text-navy-900">Todo lo que necesitas para viajar</h2>
+          <p class="mt-4 text-navy-800/80 leading-relaxed">Elige un servicio suelto o déjanos armar el viaje completo.</p>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <article class="rounded-2xl bg-white p-8 border border-navy-100">
+            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-navy-900 text-2xl" aria-hidden="true">✈️</div>
+            <h3 class="mt-6 font-display text-xl font-semibold text-navy-900">Vuelos</h3>
+            <p class="mt-3 text-navy-800/80 leading-relaxed">Comparamos aerolíneas y horarios para conseguirte la mejor tarifa y la ruta más cómoda, nacional o internacional.</p>
+          </article>
+
+          <article class="rounded-2xl bg-white p-8 border border-navy-100">
+            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-navy-900 text-2xl" aria-hidden="true">🏨</div>
+            <h3 class="mt-6 font-display text-xl font-semibold text-navy-900">Hoteles</h3>
+            <p class="mt-3 text-navy-800/80 leading-relaxed">Hospedaje verificado, desde boutiques hasta resorts, elegido según tu presupuesto, ubicación y estilo de viaje.</p>
+          </article>
+
+          <article class="rounded-2xl bg-white p-8 border border-navy-100">
+            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-navy-900 text-2xl" aria-hidden="true">🌴</div>
+            <h3 class="mt-6 font-display text-xl font-semibold text-navy-900">Paquetes todo incluido</h3>
+            <p class="mt-3 text-navy-800/80 leading-relaxed">Vuelo, hotel, traslados y alimentación en un solo precio. Sin sorpresas y sin gestionar nada por tu cuenta.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. RESPALDO CORPORATIVO -->
+    <section aria-label="Respaldo corporativo" class="bg-white border-y border-navy-100">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
+        <span class="hidden sm:block h-px w-12 bg-gold" aria-hidden="true"></span>
+        <p class="text-sm sm:text-base text-navy-800">
+          Operando en afiliación con <strong class="font-semibold text-navy-900">Kultur Travel</strong>
+        </p>
+        <span class="hidden sm:block h-px w-12 bg-gold" aria-hidden="true"></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- 5. FOOTER -->
+  <footer class="bg-navy-950 text-navy-100">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12 grid gap-8 md:grid-cols-3 md:items-center">
+      <div>
+        <p class="font-display text-xl font-semibold text-white">Moon Travel</p>
+        <p class="mt-2 text-sm text-navy-100/70">Viajes premium, sin complicaciones.</p>
+      </div>
+
+      <div class="text-sm">
+        <a href="mailto:contacto@moontravel.com" class="underline underline-offset-4 decoration-white/30 hover:decoration-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded">
+          contacto@moontravel.com
+        </a>
+      </div>
+
+      <ul class="flex gap-6 text-sm md:justify-end">
+        <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" class="hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded">Instagram</a></li>
+        <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" class="hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded">Facebook</a></li>
+      </ul>
+    </div>
+    <div class="border-t border-white/10">
+      <p class="max-w-6xl mx-auto px-5 sm:px-8 py-5 text-xs text-navy-100/60">
+        © <span id="year">2026</span> Moon Travel. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
