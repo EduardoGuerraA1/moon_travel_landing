@@ -1,419 +1,366 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moon Travel | Viajes premium sin complicaciones</title>
-    <meta
-      name="description"
-      content="Moon Travel te ayuda a planear vuelos, hoteles y paquetes todo incluido con atención personalizada y experiencia premium."
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moon Travel | Viajes premium sin complicaciones</title>
+  <meta name="description" content="Moon Travel te ayuda a planear vuelos, hoteles y paquetes todo incluido con atención personalizada." />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              navy: {
-                950: "#0A1730",
-                900: "#0F2147",
-                800: "#16306A",
-                100: "#E6ECF7",
-                50: "#F4F7FC"
-              },
-              gold: "#C8A45C"
-            },
-            fontFamily: {
-              display: ["Fraunces", "Georgia", "serif"],
-              sans: ["Inter", "system-ui", "sans-serif"]
-            },
-            boxShadow: {
-              soft: "0 20px 45px rgba(10, 23, 48, 0.12)"
-            }
-          }
-        }
-      };
-    </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { navy: { 950:"#0A1730", 900:"#0F2147", 800:"#16306A", 100:"#E6ECF7", 50:"#F4F7FC" }, gold:"#C8A45C" },
+        fontFamily: { display:["Fraunces","Georgia","serif"], sans:["Inter","system-ui","sans-serif"] },
+        boxShadow: { soft:"0 20px 45px rgba(10,23,48,.12)" }
+      } }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    .section-title { letter-spacing: -0.04em; }
+  </style>
+</head>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+<body class="font-sans bg-white text-navy-950 antialiased">
 
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
+  <!-- NAV -->
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-navy-100 bg-white/90 backdrop-blur-md">
+    <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8" aria-label="Principal">
+      <a href="#inicio" class="flex items-center gap-2 rounded font-display text-xl font-semibold tracking-tight text-navy-900 sm:text-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800">
+        <!-- Logo: coloca tu archivo en assets/logo.png (si no existe, solo se ve el texto) -->
+        <img src="assets/logo.png" alt="" class="h-8 w-auto" onerror="this.remove()" />
+        Moon Travel
+      </a>
+      <div class="hidden items-center gap-8 text-sm font-medium text-navy-800 md:flex">
+        <a href="#servicios" class="transition hover:text-navy-900">Servicios</a>
+        <a href="#destinos" class="transition hover:text-navy-900">Ofertas</a>
+        <a href="#por-que" class="transition hover:text-navy-900">¿Por qué elegirnos?</a>
+        <a href="#contacto" class="transition hover:text-navy-900">Contacto</a>
+      </div>
+      <a data-wa="Hola Moon Travel, quiero información sobre un viaje" href="#" target="_blank" rel="noopener"
+         class="inline-flex items-center rounded-full bg-navy-900 px-5 py-2 text-sm font-medium text-white transition hover:bg-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800">
+        Contáctanos
+      </a>
+    </nav>
+  </header>
 
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-      }
-
-      .section-title {
-        letter-spacing: -0.04em;
-      }
-    </style>
-  </head>
-
-  <body class="font-sans bg-white text-navy-950 antialiased">
-    <header class="fixed inset-x-0 top-0 z-50 border-b border-navy-100 bg-white/90 backdrop-blur-md">
-      <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8" aria-label="Principal">
-        <a
-          href="#inicio"
-          class="rounded font-display text-xl font-semibold tracking-tight text-navy-900 sm:text-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800"
-        >
-          Moon Travel
-        </a>
-
-        <div class="hidden items-center gap-8 text-sm font-medium text-navy-800 md:flex">
-          <a href="#servicios" class="transition hover:text-navy-900">Servicios</a>
-          <a href="#destinos" class="transition hover:text-navy-900">Destinos</a>
-          <a href="#por-que" class="transition hover:text-navy-900">¿Por qué elegirnos?</a>
-          <a href="#contacto" class="transition hover:text-navy-900">Contacto</a>
-        </div>
-
-        <a
-          href="#contacto"
-          class="inline-flex items-center rounded-full bg-navy-900 px-5 py-2 text-sm font-medium text-white transition hover:bg-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800"
-        >
-          Contáctanos
-        </a>
-      </nav>
-    </header>
-
-    <main>
-      <section id="inicio" class="relative isolate overflow-hidden bg-navy-950 pt-16">
-        <div
-          class="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
-          style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');"
-          role="img"
-          aria-label="Vista aérea de un destino de playa durante un viaje premium"
-        ></div>
-        <div class="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/55"></div>
-
-        <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32 lg:py-44">
-          <div class="max-w-2xl">
-            <span
-              class="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-navy-100"
-            >
-              Viajes premium
-            </span>
-
-            <h1 class="section-title mt-6 font-display text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-              Tu próximo destino, sin complicaciones
-            </h1>
-
-            <p class="mt-6 max-w-xl text-base leading-relaxed text-navy-100/90 sm:text-lg">
-              Nos encargamos de los vuelos, el hospedaje y cada detalle del itinerario.
-              Tú solo eliges a dónde ir y disfrutas el camino con la tranquilidad de viajar acompañado.
-            </p>
-
-            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="#contacto"
-                class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold text-navy-900 shadow-lg transition duration-200 hover:-translate-y-0.5 hover:bg-navy-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              >
-                Cotiza tu viaje
-              </a>
-
-              <a
-                href="#servicios"
-                class="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/5 px-8 py-4 text-base font-medium text-white transition duration-200 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              >
-                Ver servicios
-              </a>
-            </div>
-
-            <div class="mt-10 flex flex-wrap items-center gap-5 text-sm text-navy-100/80">
-              <div class="flex items-center gap-2">
-                <span class="h-2.5 w-2.5 rounded-full bg-gold"></span>
-                Atención personalizada
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="h-2.5 w-2.5 rounded-full bg-gold"></span>
-                Reserva segura
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="h-2.5 w-2.5 rounded-full bg-gold"></span>
-                Experiencia premium
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="servicios" class="bg-navy-50 py-20 sm:py-24">
-        <div class="mx-auto max-w-6xl px-5 sm:px-8">
-          <div class="max-w-2xl">
-            <p class="text-sm font-medium uppercase tracking-[0.2em] text-navy-800/70">Servicios</p>
-            <h2 class="section-title mt-3 font-display text-3xl font-semibold text-navy-900 sm:text-4xl">
-              Todo lo que necesitas para viajar
-            </h2>
-            <p class="mt-4 text-base leading-relaxed text-navy-800/80">
-              Elige un servicio individual o déjanos diseñar tu viaje completo según tus fechas, presupuesto y estilo.
-            </p>
-          </div>
-
-          <div class="mt-12 grid gap-6 md:grid-cols-3">
-            <article class="rounded-2xl border border-navy-100 bg-white p-8 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-soft">
-              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-navy-900 text-2xl" aria-hidden="true">
-                ✈️
-              </div>
-              <h3 class="mt-6 font-display text-xl font-semibold text-navy-900">Vuelos</h3>
-              <p class="mt-3 text-base leading-relaxed text-navy-800/80">
-                Comparamos aerolíneas, horarios y rutas para conseguirte la mejor opción con comodidad y valor.
-              </p>
-            </article>
-
-            <article class="rounded-2xl border border-navy-100 bg-white p-8 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-soft">
-              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-navy-900 text-2xl" aria-hidden="true">
-                🏨
-              </div>
-              <h3 class="mt-6 font-display text-xl font-semibold text-navy-900">Hoteles</h3>
-              <p class="mt-3 text-base leading-relaxed text-navy-800/80">
-                Hospedaje verificado según tu presupuesto, ubicación ideal y estilo de viaje, desde boutique hasta resort.
-              </p>
-            </article>
-
-            <article class="rounded-2xl border border-navy-100 bg-white p-8 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-soft">
-              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-navy-900 text-2xl" aria-hidden="true">
-                🌴
-              </div>
-              <h3 class="mt-6 font-display text-xl font-semibold text-navy-900">Paquetes completos</h3>
-              <p class="mt-3 text-base leading-relaxed text-navy-800/80">
-                Vuelo, hotel, traslados y actividades en una sola propuesta pensada para que tú solo disfrutes.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="destinos" class="bg-white py-20 sm:py-24">
-        <div class="mx-auto max-w-6xl px-5 sm:px-8">
-          <div class="text-center">
-            <p class="text-sm font-medium uppercase tracking-[0.2em] text-navy-800/70">Destinos destacados</p>
-            <h2 class="section-title mt-3 font-display text-3xl font-semibold text-navy-900 sm:text-4xl">
-              Experiencias pensadas para cada tipo de viajero
-            </h2>
-          </div>
-
-          <div class="mt-12 grid gap-6 md:grid-cols-3">
-            <article class="overflow-hidden rounded-3xl border border-navy-100 bg-white shadow-sm">
-              <img
-                src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80"
-                alt="Paisaje costero turístico"
-                class="h-64 w-full object-cover"
-              />
-              <div class="p-6">
-                <p class="text-sm font-medium uppercase tracking-[0.15em] text-gold">Playas</p>
-                <h3 class="mt-3 font-display text-2xl font-semibold text-navy-900">Caribe & Costa</h3>
-                <p class="mt-3 text-base leading-relaxed text-navy-800/80">
-                  Sol, mar, relajación extrema y paquetes todo incluido con la mejor organización.
-                </p>
-              </div>
-            </article>
-
-            <article class="overflow-hidden rounded-3xl border border-navy-100 bg-white shadow-sm">
-              <img
-                src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=900&q=80"
-                alt="Ciudad europea con arquitectura histórica"
-                class="h-64 w-full object-cover"
-              />
-              <div class="p-6">
-                <p class="text-sm font-medium uppercase tracking-[0.15em] text-gold">Europa</p>
-                <h3 class="mt-3 font-display text-2xl font-semibold text-navy-900">Europa clásica</h3>
-                <p class="mt-3 text-base leading-relaxed text-navy-800/80">
-                  Ciudades históricas, gastronomía, cultura y una experiencia elegante y sin estrés.
-                </p>
-              </div>
-            </article>
-
-            <article class="overflow-hidden rounded-3xl border border-navy-100 bg-white shadow-sm">
-              <img
-                src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80"
-                alt="Paisaje de montaña tropical con lago"
-                class="h-64 w-full object-cover"
-              />
-              <div class="p-6">
-                <p class="text-sm font-medium uppercase tracking-[0.15em] text-gold">Aventura</p>
-                <h3 class="mt-3 font-display text-2xl font-semibold text-navy-900">Naturaleza & aventura</h3>
-                <p class="mt-3 text-base leading-relaxed text-navy-800/80">
-                  Rutas, paisajes increíbles y escapadas pensadas para quienes buscan algo más que turismo.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="por-que" class="bg-navy-50 py-20 sm:py-24">
-        <div class="mx-auto max-w-6xl px-5 sm:px-8">
-          <div class="max-w-2xl">
-            <p class="text-sm font-medium uppercase tracking-[0.2em] text-navy-800/70">¿Por qué elegirnos?</p>
-            <h2 class="section-title mt-3 font-display text-3xl font-semibold text-navy-900 sm:text-4xl">
-              Viajar bien es una experiencia, no un trámite
-            </h2>
-          </div>
-
-          <div class="mt-12 grid gap-6 md:grid-cols-3">
-            <article class="rounded-2xl border border-navy-100 bg-white p-7 shadow-sm">
-              <div class="text-3xl">✈️</div>
-              <h3 class="mt-5 font-display text-xl font-semibold text-navy-900">Planificación inteligente</h3>
-              <p class="mt-3 text-base leading-relaxed text-navy-800/80">
-                Recomendaciones enfocadas en tu tiempo, presupuesto y estilo para que cada detalle tenga sentido.
-              </p>
-            </article>
-
-            <article class="rounded-2xl border border-navy-100 bg-white p-7 shadow-sm">
-              <div class="text-3xl">🧳</div>
-              <h3 class="mt-5 font-display text-xl font-semibold text-navy-900">Todo en un solo lugar</h3>
-              <p class="mt-3 text-base leading-relaxed text-navy-800/80">
-                Coordinamos vuelos, hoteles, traslados y experiencias para que no tengas que preocuparte por nada.
-              </p>
-            </article>
-
-            <article class="rounded-2xl border border-navy-100 bg-white p-7 shadow-sm">
-              <div class="text-3xl">💬</div>
-              <h3 class="mt-5 font-display text-xl font-semibold text-navy-900">Atención real</h3>
-              <p class="mt-3 text-base leading-relaxed text-navy-800/80">
-                Te acompañamos desde la primera consulta hasta que regreses con la mejor experiencia posible.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="bg-white py-20 sm:py-24">
-        <div class="mx-auto max-w-6xl px-5 sm:px-8">
-          <div class="grid gap-8 lg:grid-cols-3">
-            <div class="rounded-3xl bg-navy-900 p-8 text-white shadow-soft">
-              <p class="text-4xl font-display font-semibold">+1,200</p>
-              <p class="mt-2 text-navy-100/80">viajes organizados</p>
-            </div>
-
-            <div class="rounded-3xl bg-navy-50 p-8 shadow-sm">
-              <p class="text-4xl font-display font-semibold text-navy-900">4.9/5</p>
-              <p class="mt-2 text-navy-800/80">promedio de satisfacción</p>
-            </div>
-
-            <div class="rounded-3xl bg-gold/10 p-8 shadow-sm">
-              <p class="text-4xl font-display font-semibold text-navy-900">24/7</p>
-              <p class="mt-2 text-navy-800/80">soporte antes y durante el viaje</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="bg-navy-950 py-20 sm:py-24">
-        <div class="mx-auto max-w-4xl px-5 text-center sm:px-8">
-          <p class="text-sm font-medium uppercase tracking-[0.2em] text-navy-100/70">Tu próximo viaje</p>
-          <h2 class="section-title mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
-            ¿A dónde quieres ir la próxima vez?
-          </h2>
-          <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-navy-100/75">
-            Cuéntanos tus fechas, destino y estilo de viaje y te ayudamos a crear la opción ideal para ti.
+  <main>
+    <!-- HERO -->
+    <section id="inicio" class="relative isolate overflow-hidden bg-navy-950 pt-16">
+      <div class="absolute inset-0 -z-20 bg-cover bg-center"
+           style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');"
+           role="img" aria-label="Vista de un destino de playa"></div>
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/55"></div>
+      <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32 lg:py-44">
+        <div class="max-w-2xl">
+          <h1 class="section-title font-display text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
+            Tu próximo destino, sin complicaciones
+          </h1>
+          <p class="mt-6 max-w-xl text-base leading-relaxed text-navy-100/90 sm:text-lg">
+            Nos encargamos de los vuelos, el hospedaje y cada detalle del itinerario. Tú solo eliges a dónde ir y disfrutas el camino con la tranquilidad de viajar acompañado.
           </p>
-
-          <a
-            href="#contacto"
-            class="mt-8 inline-flex items-center rounded-full bg-gold px-8 py-4 text-base font-semibold text-navy-950 transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-          >
-            Hablar con un asesor
-          </a>
-        </div>
-      </section>
-
-      <section id="contacto" class="bg-white py-20 sm:py-24">
-        <div class="mx-auto max-w-6xl px-5 sm:px-8">
-          <div class="rounded-3xl border border-navy-100 bg-navy-50 p-8 shadow-sm md:p-12">
-            <div class="grid gap-8 md:grid-cols-2 md:items-center">
-              <div>
-                <p class="text-sm font-medium uppercase tracking-[0.2em] text-navy-800/70">Contacto</p>
-                <h2 class="section-title mt-3 font-display text-3xl font-semibold text-navy-900 sm:text-4xl">
-                  Planea tu próximo escape con nosotros
-                </h2>
-                <p class="mt-4 text-base leading-relaxed text-navy-800/80">
-                  Déjanos tus datos y te ayudaremos a diseñar el viaje perfecto según tus gustos, fechas y presupuesto.
-                </p>
-              </div>
-
-              <form class="space-y-4">
-                <div>
-                  <label for="name" class="mb-2 block text-sm font-medium text-navy-900">Nombre</label>
-                  <input
-                    id="name"
-                    type="text"
-                    placeholder="Tu nombre"
-                    class="w-full rounded-xl border border-navy-100 bg-white px-4 py-3 text-navy-900 placeholder:text-navy-800/40 focus:border-navy-800 focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label for="email" class="mb-2 block text-sm font-medium text-navy-900">Correo</label>
-                  <input
-                    id="email"
-                    type="email"
-                    placeholder="correo@ejemplo.com"
-                    class="w-full rounded-xl border border-navy-100 bg-white px-4 py-3 text-navy-900 placeholder:text-navy-800/40 focus:border-navy-800 focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label for="message" class="mb-2 block text-sm font-medium text-navy-900">Qué te gustaría vivir</label>
-                  <textarea
-                    id="message"
-                    rows="4"
-                    placeholder="Quiero un paquete para playa, aventura o Europa..."
-                    class="w-full rounded-xl border border-navy-100 bg-white px-4 py-3 text-navy-900 placeholder:text-navy-800/40 focus:border-navy-800 focus:outline-none"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  class="inline-flex items-center rounded-full bg-navy-900 px-6 py-3 text-base font-semibold text-white transition hover:bg-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800"
-                >
-                  Enviar solicitud
-                </button>
-              </form>
-            </div>
+          <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+            <a href="#contacto" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold text-navy-900 shadow-lg transition hover:bg-navy-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">Cotiza tu viaje</a>
+            <a href="#servicios" class="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/5 px-8 py-4 text-base font-medium text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">Ver servicios</a>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <footer class="bg-navy-950 text-navy-100">
-      <div class="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:px-8 md:grid-cols-3 md:items-center">
-        <div>
-          <p class="font-display text-xl font-semibold text-white">Moon Travel</p>
-          <p class="mt-2 text-sm text-navy-100/70">Viajes premium, sin complicaciones.</p>
+    <!-- RESPALDO CORPORATIVO -->
+    <section aria-label="Respaldo corporativo" class="border-b border-navy-100 bg-white">
+      <div class="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 px-5 py-6 text-center sm:flex-row sm:gap-4 sm:px-8">
+        <!-- Logo Kultur Travel: coloca assets/kultur-travel.png (si no existe, se omite) -->
+        <img src="assets/kultur-travel.png" alt="Logo de Kultur Travel" class="h-8 w-auto" onerror="this.remove()" />
+        <p class="text-sm text-navy-800 sm:text-base">Operando en afiliación con <strong class="font-semibold text-navy-900">Kultur Travel</strong></p>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="bg-navy-50 py-20 sm:py-24">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8">
+        <div class="max-w-2xl">
+          <h2 class="section-title font-display text-3xl font-semibold text-navy-900 sm:text-4xl">Todo lo que necesitas para viajar</h2>
+          <p class="mt-4 text-base leading-relaxed text-navy-800/80">Elige un servicio individual o déjanos diseñar tu viaje completo según tus fechas, presupuesto y estilo.</p>
+        </div>
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <article class="rounded-2xl border border-navy-100 bg-white p-8 shadow-sm">
+            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-navy-900 text-2xl" aria-hidden="true">✈️</div>
+            <h3 class="mt-6 font-display text-xl font-semibold text-navy-900">Vuelos</h3>
+            <p class="mt-3 leading-relaxed text-navy-800/80">Comparamos aerolíneas, horarios y rutas para conseguirte la mejor opción con comodidad y valor.</p>
+          </article>
+          <article class="rounded-2xl border border-navy-100 bg-white p-8 shadow-sm">
+            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-navy-900 text-2xl" aria-hidden="true">🏨</div>
+            <h3 class="mt-6 font-display text-xl font-semibold text-navy-900">Hoteles</h3>
+            <p class="mt-3 leading-relaxed text-navy-800/80">Hospedaje según tu presupuesto, ubicación ideal y estilo de viaje, desde boutique hasta resort.</p>
+          </article>
+          <article class="rounded-2xl border border-navy-100 bg-white p-8 shadow-sm">
+            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-navy-900 text-2xl" aria-hidden="true">🌴</div>
+            <h3 class="mt-6 font-display text-xl font-semibold text-navy-900">Paquetes todo incluido</h3>
+            <p class="mt-3 leading-relaxed text-navy-800/80">Vuelo, hotel, traslados y actividades en una sola propuesta pensada para que tú solo disfrutes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFERTAS (dinámicas desde Supabase) -->
+    <section id="destinos" class="bg-white py-20 sm:py-24">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8">
+        <div class="text-center">
+          <h2 class="section-title font-display text-3xl font-semibold text-navy-900 sm:text-4xl">Experiencias pensadas para cada tipo de viajero</h2>
+          <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-navy-800/80">Propuestas actuales de nuestro equipo. ¿No ves lo que buscas? Lo armamos a tu medida.</p>
         </div>
 
-        <div class="text-sm">
-          <a href="mailto:contacto@moontravel.com" class="underline decoration-white/30 underline-offset-4 hover:decoration-white">
-            contacto@moontravel.com
-          </a>
+        <div id="filtros" class="mt-8 flex flex-wrap justify-center gap-2" role="group" aria-label="Filtrar ofertas por categoría"></div>
+
+        <p id="ofertas-estado" class="mt-10 text-center text-navy-800/70" role="status">Cargando ofertas…</p>
+        <div id="ofertas-grid" class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- POR QUÉ -->
+    <section id="por-que" class="bg-navy-50 py-20 sm:py-24">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8">
+        <div class="max-w-2xl">
+          <h2 class="section-title font-display text-3xl font-semibold text-navy-900 sm:text-4xl">Viajar bien es una experiencia, no un trámite</h2>
         </div>
-
-        <ul class="flex gap-6 text-sm md:justify-end">
-          <li><a href="#contacto" class="transition hover:text-white">Instagram</a></li>
-          <li><a href="#contacto" class="transition hover:text-white">Facebook</a></li>
-        </ul>
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <article class="rounded-2xl border border-navy-100 bg-white p-7 shadow-sm">
+            <div class="text-3xl" aria-hidden="true">🧭</div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-navy-900">Planificación inteligente</h3>
+            <p class="mt-3 leading-relaxed text-navy-800/80">Recomendaciones enfocadas en tu tiempo, presupuesto y estilo para que cada detalle tenga sentido.</p>
+          </article>
+          <article class="rounded-2xl border border-navy-100 bg-white p-7 shadow-sm">
+            <div class="text-3xl" aria-hidden="true">🧳</div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-navy-900">Todo en un solo lugar</h3>
+            <p class="mt-3 leading-relaxed text-navy-800/80">Coordinamos vuelos, hoteles, traslados y experiencias para que no tengas que preocuparte por nada.</p>
+          </article>
+          <article class="rounded-2xl border border-navy-100 bg-white p-7 shadow-sm">
+            <div class="text-3xl" aria-hidden="true">💬</div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-navy-900">Atención real</h3>
+            <p class="mt-3 leading-relaxed text-navy-800/80">Te acompañamos desde la primera consulta hasta tu regreso, con una persona al otro lado del chat.</p>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <div class="border-t border-white/10">
-        <p class="mx-auto max-w-6xl px-5 py-5 text-xs text-navy-100/60 sm:px-8">
-          © <span id="year">2026</span> Moon Travel. Todos los derechos reservados.
-        </p>
+    <!-- CONTACTO -->
+    <section id="contacto" class="bg-white py-20 sm:py-24">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8">
+        <div class="rounded-3xl border border-navy-100 bg-navy-50 p-8 shadow-sm md:p-12">
+          <div class="grid gap-8 md:grid-cols-2 md:items-center">
+            <div>
+              <h2 class="section-title font-display text-3xl font-semibold text-navy-900 sm:text-4xl">Planea tu próximo escape con nosotros</h2>
+              <p class="mt-4 leading-relaxed text-navy-800/80">Déjanos tus datos y te ayudaremos a diseñar el viaje perfecto según tus gustos, fechas y presupuesto.</p>
+            </div>
+
+            <form id="form-contacto" class="space-y-4" novalidate>
+              <div>
+                <label for="name" class="mb-2 block text-sm font-medium text-navy-900">Nombre</label>
+                <input id="name" name="nombre" type="text" required maxlength="100" autocomplete="name" placeholder="Tu nombre"
+                  class="w-full rounded-xl border border-navy-100 bg-white px-4 py-3 text-navy-900 placeholder:text-navy-800/40 focus:border-navy-800 focus:outline-none" />
+              </div>
+              <div>
+                <label for="email" class="mb-2 block text-sm font-medium text-navy-900">Correo</label>
+                <input id="email" name="correo" type="email" required maxlength="150" autocomplete="email" placeholder="correo@ejemplo.com"
+                  class="w-full rounded-xl border border-navy-100 bg-white px-4 py-3 text-navy-900 placeholder:text-navy-800/40 focus:border-navy-800 focus:outline-none" />
+              </div>
+              <div>
+                <label for="message" class="mb-2 block text-sm font-medium text-navy-900">Qué te gustaría vivir</label>
+                <textarea id="message" name="mensaje" rows="4" required maxlength="1000" placeholder="Quiero un paquete para playa, aventura o Europa…"
+                  class="w-full rounded-xl border border-navy-100 bg-white px-4 py-3 text-navy-900 placeholder:text-navy-800/40 focus:border-navy-800 focus:outline-none"></textarea>
+              </div>
+              <button type="submit" id="btn-enviar"
+                class="inline-flex items-center rounded-full bg-navy-900 px-6 py-3 text-base font-semibold text-white transition hover:bg-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800">
+                Enviar solicitud
+              </button>
+              <p id="form-estado" class="text-sm text-navy-800/80" role="status"></p>
+            </form>
+          </div>
+        </div>
       </div>
-    </footer>
+    </section>
+  </main>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </body>
+  <!-- FOOTER -->
+  <footer class="bg-navy-950 text-navy-100">
+    <div class="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:px-8 md:grid-cols-3 md:items-center">
+      <div>
+        <p class="font-display text-xl font-semibold text-white">Moon Travel</p>
+        <p class="mt-2 text-sm text-navy-100/70">Viajes premium, sin complicaciones.</p>
+        <p class="mt-1 text-sm text-navy-100/70">Operando en afiliación con Kultur Travel.</p>
+      </div>
+      <div class="text-sm">
+        <a href="mailto:contacto@moontravel.com" class="underline decoration-white/30 underline-offset-4 hover:decoration-white">contacto@moontravel.com</a>
+      </div>
+      <ul class="flex gap-6 text-sm md:justify-end">
+        <!-- Reemplaza por los perfiles reales -->
+        <li><a href="https://www.instagram.com/moontravel" target="_blank" rel="noopener" class="transition hover:text-white">Instagram</a></li>
+        <li><a href="https://www.facebook.com/moontravel" target="_blank" rel="noopener" class="transition hover:text-white">Facebook</a></li>
+      </ul>
+    </div>
+    <div class="border-t border-white/10">
+      <p class="mx-auto max-w-6xl px-5 py-5 text-xs text-navy-100/60 sm:px-8">© <span id="year">2026</span> Moon Travel. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* ============ CONFIGURACIÓN ============ */
+    const CONFIG = {
+      SUPABASE_URL: "https://skuvuttaqocdgdxvtule.supabase.co",        // ej: https://xxxx.supabase.co
+      SUPABASE_ANON_KEY: "sb_publishable_ox1ZM4qIps-PdybnajS-Ng_oXBCHub3",
+      WHATSAPP: "50200000000"  // código de país + número, sin signos
+    };
+
+    /* Ofertas de respaldo: se muestran si Supabase no está configurado o falla */
+    const OFERTAS_RESPALDO = [
+      { id:"r1", titulo:"Caribe & Costa", destino:"Caribe", categoria:"Playas", descripcion:"Sol, mar y relajación con paquetes todo incluido.", precio_desde:null, moneda:"USD", duracion:null, incluye:[], imagen_url:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80", destacada:false },
+      { id:"r2", titulo:"Europa clásica", destino:"Europa", categoria:"Europa", descripcion:"Ciudades históricas, gastronomía y cultura sin estrés.", precio_desde:null, moneda:"USD", duracion:null, incluye:[], imagen_url:"https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=900&q=80", destacada:false },
+      { id:"r3", titulo:"Naturaleza & aventura", destino:"Latinoamérica", categoria:"Aventura", descripcion:"Rutas y paisajes para quienes buscan algo más que turismo.", precio_desde:null, moneda:"USD", duracion:null, incluye:[], imagen_url:"https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80", destacada:false }
+    ];
+
+    /* ============ UTILIDADES ============ */
+    const $ = (s) => document.querySelector(s);
+    const waLink = (texto) => `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(texto)}`;
+
+    // Las claves nuevas (sb_publishable_...) no son JWT: solo van en "apikey".
+    // Las claves legacy anon (eyJ...) además van como Bearer.
+    function sbHeaders(extra = {}) {
+      const k = CONFIG.SUPABASE_ANON_KEY;
+      const h = { apikey: k, ...extra };
+      if (k.startsWith("eyJ")) h.Authorization = `Bearer ${k}`;
+      return h;
+    }
+
+    function el(tag, className, text) {
+      const n = document.createElement(tag);
+      if (className) n.className = className;
+      if (text != null) n.textContent = text;   // textContent: nunca interpreta HTML
+      return n;
+    }
+    function urlSegura(u) {
+      try { return ["https:", "http:"].includes(new URL(u).protocol) ? u : ""; } catch { return ""; }
+    }
+    function formatoPrecio(valor, moneda) {
+      if (valor == null) return null;
+      try { return new Intl.NumberFormat("es-GT", { style:"currency", currency: moneda || "USD", maximumFractionDigits:0 }).format(valor); }
+      catch { return `${moneda || ""} ${valor}`; }
+    }
+
+    /* ============ OFERTAS ============ */
+    let ofertas = [];
+    let categoriaActiva = "Todas";
+
+    async function cargarOfertas() {
+      if (!CONFIG.SUPABASE_URL || !CONFIG.SUPABASE_ANON_KEY) return OFERTAS_RESPALDO;
+      // RLS ya filtra activas y vigentes; aquí solo ordenamos
+      const url = `${CONFIG.SUPABASE_URL}/rest/v1/ofertas?select=*&order=destacada.desc,orden.asc,created_at.desc`;
+      const res = await fetch(url, { headers: sbHeaders() });
+      if (!res.ok) throw new Error(`Supabase respondió ${res.status}`);
+      return res.json();
+    }
+
+    function tarjeta(o) {
+      const card = el("article", "flex flex-col overflow-hidden rounded-3xl border border-navy-100 bg-white shadow-sm");
+      const media = el("div", "relative");
+      const img = el("img", "h-60 w-full object-cover bg-navy-50");
+      img.src = urlSegura(o.imagen_url) || "https://placehold.co/900x600/E6ECF7/16306A?text=Moon+Travel";
+      img.alt = `${o.destino}: ${o.titulo}`;
+      img.loading = "lazy";
+      media.append(img);
+      if (o.destacada) media.append(el("span", "absolute left-4 top-4 rounded-full bg-gold px-3 py-1 text-xs font-semibold text-navy-950", "Destacada"));
+      card.append(media);
+
+      const body = el("div", "flex flex-1 flex-col p-6");
+      body.append(el("p", "text-sm font-medium text-gold", o.categoria));
+      body.append(el("h3", "mt-2 font-display text-2xl font-semibold text-navy-900", o.titulo));
+      const meta = [o.destino, o.duracion].filter(Boolean).join(" · ");
+      if (meta) body.append(el("p", "mt-1 text-sm text-navy-800/70", meta));
+      body.append(el("p", "mt-3 leading-relaxed text-navy-800/80", o.descripcion));
+
+      if (Array.isArray(o.incluye) && o.incluye.length) {
+        const ul = el("ul", "mt-4 flex flex-wrap gap-2");
+        o.incluye.slice(0, 4).forEach((i) => ul.append(el("li", "rounded-full bg-navy-50 px-3 py-1 text-xs text-navy-800", i)));
+        body.append(ul);
+      }
+
+      const pie = el("div", "mt-auto flex items-end justify-between gap-4 pt-6");
+      const precio = formatoPrecio(o.precio_desde, o.moneda);
+      const bloque = el("div");
+      bloque.append(el("p", "text-xs text-navy-800/60", precio ? "Desde" : "Precio"));
+      bloque.append(el("p", "font-display text-xl font-semibold text-navy-900", precio || "Consúltalo"));
+      pie.append(bloque);
+
+      const btn = el("a", "inline-flex items-center rounded-full bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800", "Cotizar este viaje");
+      btn.href = waLink(`Hola Moon Travel, quiero cotizar: ${o.titulo} (${o.destino}).`);
+      btn.target = "_blank"; btn.rel = "noopener";
+      pie.append(btn);
+      body.append(pie);
+      card.append(body);
+      return card;
+    }
+
+    function pintarFiltros() {
+      const cont = $("#filtros");
+      cont.replaceChildren();
+      const cats = ["Todas", ...new Set(ofertas.map((o) => o.categoria))];
+      if (cats.length <= 2) return;   // con una sola categoría no hace falta filtrar
+      cats.forEach((c) => {
+        const activo = c === categoriaActiva;
+        const b = el("button", `rounded-full border px-4 py-2 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800 ${activo ? "border-navy-900 bg-navy-900 text-white" : "border-navy-100 bg-white text-navy-800 hover:border-navy-800"}`, c);
+        b.type = "button";
+        b.setAttribute("aria-pressed", String(activo));
+        b.addEventListener("click", () => { categoriaActiva = c; pintar(); });
+        cont.append(b);
+      });
+    }
+
+    function pintar() {
+      pintarFiltros();
+      const grid = $("#ofertas-grid");
+      const lista = categoriaActiva === "Todas" ? ofertas : ofertas.filter((o) => o.categoria === categoriaActiva);
+      grid.replaceChildren(...lista.map(tarjeta));
+      $("#ofertas-estado").textContent = lista.length ? "" : "Pronto publicaremos nuevas ofertas. Escríbenos y armamos tu viaje a medida.";
+    }
+
+    (async function initOfertas() {
+      try { ofertas = await cargarOfertas(); }
+      catch (e) { console.error(e); ofertas = OFERTAS_RESPALDO; }
+      pintar();
+    })();
+
+    /* ============ FORMULARIO ============ */
+    $("#form-contacto").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const f = e.target, estado = $("#form-estado"), btn = $("#btn-enviar");
+      if (!f.checkValidity()) { f.reportValidity(); return; }
+      const datos = { nombre: f.nombre.value.trim(), correo: f.correo.value.trim(), mensaje: f.mensaje.value.trim() };
+
+      btn.disabled = true; estado.textContent = "Enviando…";
+      // 1) Guardar la solicitud en Supabase (si está configurado). Si falla, igual seguimos a WhatsApp.
+      if (CONFIG.SUPABASE_URL && CONFIG.SUPABASE_ANON_KEY) {
+        try {
+          await fetch(`${CONFIG.SUPABASE_URL}/rest/v1/solicitudes`, {
+            method: "POST",
+            headers: sbHeaders({ "Content-Type": "application/json", Prefer: "return=minimal" }),
+            body: JSON.stringify(datos)
+          });
+        } catch (err) { console.error(err); }
+      }
+      // 2) Abrir WhatsApp con el mensaje armado
+      window.open(waLink(`Hola Moon Travel, soy ${datos.nombre} (${datos.correo}). ${datos.mensaje}`), "_blank", "noopener");
+      estado.textContent = "¡Gracias! Te contactaremos pronto.";
+      f.reset(); btn.disabled = false;
+    });
+
+    /* ============ INIT ============ */
+    document.querySelectorAll("[data-wa]").forEach((a) => { a.href = waLink(a.dataset.wa); });
+    $("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
