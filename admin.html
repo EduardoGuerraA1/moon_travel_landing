@@ -22,8 +22,8 @@
     <form id="form-login" class="w-full max-w-sm space-y-4 rounded-3xl border border-navy-100 bg-white p-8 shadow-sm">
       <h1 class="font-display text-2xl font-semibold text-navy-900">Moon Travel · Panel</h1>
       <div>
-        <label for="l-email" class="mb-1 block text-sm font-medium">Correo</label>
-        <input id="l-email" type="email" required autocomplete="username" class="w-full rounded-xl border border-navy-100 px-4 py-3 focus:border-navy-800 focus:outline-none" />
+        <label for="l-email" class="mb-1 block text-sm font-medium">Usuario</label>
+        <input id="l-email" type="text" required autocomplete="username" autocapitalize="none" spellcheck="false" class="w-full rounded-xl border border-navy-100 px-4 py-3 focus:border-navy-800 focus:outline-none" />
       </div>
       <div>
         <label for="l-pass" class="mb-1 block text-sm font-medium">Contraseña</label>
@@ -117,7 +117,10 @@
 
   <script>
     /* Mismos valores que index.html. Solo la clave anon/publishable; NUNCA service_role. */
-    const CONFIG = { SUPABASE_URL: "https://skuvuttaqocdgdxvtule.supabase.co", SUPABASE_ANON_KEY: "sb_publishable_ox1ZM4qIps-PdybnajS-Ng_oXBCHub3" };
+    const CONFIG = {
+      SUPABASE_URL: "", SUPABASE_ANON_KEY: "",
+      DOMINIO_USUARIOS: "moontravel.com"   // el usuario "admin" se convierte en admin@moontravel.com
+    };
     const BUCKET = "ofertas", MAX_MB = 3;
 
     const sb = supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_ANON_KEY);
@@ -131,6 +134,7 @@
     const hoy = () => new Date().toISOString().slice(0, 10);
 
     /* ---------- Sesión ---------- */
+    const aEmail = (u) => { u = u.trim().toLowerCase(); return u.includes("@") ? u : `${u}@${CONFIG.DOMINIO_USUARIOS}`; };
     async function render() {
       const { data: { session } } = await sb.auth.getSession();
       $("#vista-login").classList.toggle("hidden", !!session);
@@ -141,8 +145,8 @@
     $("#form-login").addEventListener("submit", async (e) => {
       e.preventDefault();
       $("#login-error").textContent = "";
-      const { error } = await sb.auth.signInWithPassword({ email: $("#l-email").value.trim(), password: $("#l-pass").value });
-      if (error) $("#login-error").textContent = "Correo o contraseña incorrectos.";
+      const { error } = await sb.auth.signInWithPassword({ email: aEmail($("#l-email").value), password: $("#l-pass").value });
+      if (error) $("#login-error").textContent = "Usuario o contraseña incorrectos.";
       else render();
     });
     $("#btn-salir").addEventListener("click", async () => { await sb.auth.signOut(); render(); });
