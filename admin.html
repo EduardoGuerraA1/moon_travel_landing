@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Moon Travel | Panel interno</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { navy: { 950:"#0A1730", 900:"#0F2147", 800:"#16306A", 100:"#E6ECF7", 50:"#F4F7FC" }, gold:"#C8A45C" },
+      fontFamily: { display:["Fraunces","Georgia","serif"], sans:["Inter","system-ui","sans-serif"] }
+    } } };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+</head>
+<body class="min-h-screen bg-navy-50 font-sans text-navy-950 antialiased">
+
+  <!-- LOGIN -->
+  <section id="vista-login" class="hidden min-h-screen items-center justify-center px-5">
+    <form id="form-login" class="w-full max-w-sm space-y-4 rounded-3xl border border-navy-100 bg-white p-8 shadow-sm">
+      <h1 class="font-display text-2xl font-semibold text-navy-900">Moon Travel · Panel</h1>
+      <div>
+        <label for="l-email" class="mb-1 block text-sm font-medium">Correo</label>
+        <input id="l-email" type="email" required autocomplete="username" class="w-full rounded-xl border border-navy-100 px-4 py-3 focus:border-navy-800 focus:outline-none" />
+      </div>
+      <div>
+        <label for="l-pass" class="mb-1 block text-sm font-medium">Contraseña</label>
+        <input id="l-pass" type="password" required autocomplete="current-password" class="w-full rounded-xl border border-navy-100 px-4 py-3 focus:border-navy-800 focus:outline-none" />
+      </div>
+      <button class="w-full rounded-full bg-navy-900 py-3 font-semibold text-white hover:bg-navy-800">Entrar</button>
+      <p id="login-error" class="text-sm text-red-700" role="alert"></p>
+    </form>
+  </section>
+
+  <!-- APP -->
+  <div id="vista-app" class="hidden">
+    <header class="border-b border-navy-100 bg-white">
+      <div class="mx-auto flex max-w-5xl items-center justify-between px-5 py-4">
+        <p class="font-display text-xl font-semibold text-navy-900">Moon Travel · Panel</p>
+        <div class="flex items-center gap-4 text-sm">
+          <span id="usuario" class="hidden text-navy-800/70 sm:inline"></span>
+          <button id="btn-salir" class="rounded-full border border-navy-100 px-4 py-2 font-medium hover:border-navy-800">Salir</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-5 py-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex gap-2" role="tablist">
+          <button data-tab="ofertas" class="tab rounded-full px-4 py-2 text-sm font-medium">Ofertas</button>
+          <button data-tab="solicitudes" class="tab rounded-full px-4 py-2 text-sm font-medium">Solicitudes</button>
+        </div>
+        <button id="btn-nueva" class="rounded-full bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-navy-800">Nueva oferta</button>
+      </div>
+
+      <p id="aviso" class="mt-4 text-sm" role="status"></p>
+      <div id="lista" class="mt-6 space-y-3"></div>
+    </main>
+
+    <!-- FORMULARIO DE OFERTA -->
+    <dialog id="dlg" class="w-[calc(100%-2rem)] max-w-xl rounded-3xl p-0 backdrop:bg-navy-950/60">
+      <form id="form-oferta" class="max-h-[85vh] space-y-4 overflow-y-auto p-6 sm:p-8">
+        <h2 id="dlg-titulo" class="font-display text-2xl font-semibold text-navy-900">Nueva oferta</h2>
+        <input type="hidden" name="id" />
+
+        <label class="block text-sm font-medium">Título
+          <input name="titulo" required maxlength="120" class="mt-1 w-full rounded-xl border border-navy-100 px-4 py-2.5 font-normal" /></label>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block text-sm font-medium">Destino
+            <input name="destino" required maxlength="120" class="mt-1 w-full rounded-xl border border-navy-100 px-4 py-2.5 font-normal" /></label>
+          <label class="block text-sm font-medium">Categoría
+            <input name="categoria" required maxlength="40" list="cats" placeholder="Playas, Europa, Aventura…" class="mt-1 w-full rounded-xl border border-navy-100 px-4 py-2.5 font-normal" />
+            <datalist id="cats"></datalist></label>
+        </div>
+        <label class="block text-sm font-medium">Descripción corta
+          <textarea name="descripcion" required maxlength="500" rows="3" class="mt-1 w-full rounded-xl border border-navy-100 px-4 py-2.5 font-normal"></textarea></label>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <label class="block text-sm font-medium">Precio desde
+            <input name="precio_desde" type="number" min="0" step="0.01" placeholder="Vacío = Consúltalo" class="mt-1 w-full rounded-xl border border-navy-100 px-4 py-2.5 font-normal" /></label>
+          <label class="block text-sm font-medium">Moneda
+            <select name="moneda" class="mt-1 w-full rounded-xl border border-navy-100 px-4 py-2.5 font-normal"><option>USD</option><option>GTQ</option></select></label>
+          <label class="block text-sm font-medium">Duración
+            <input name="duracion" maxlength="60" placeholder="7 días / 6 noches" class="mt-1 w-full rounded-xl border border-navy-100 px-4 py-2.5 font-normal" /></label>
+        </div>
+        <label class="block text-sm font-medium">Incluye (separado por comas)
+          <input name="incluye" placeholder="Vuelo, Hotel, Traslados" class="mt-1 w-full rounded-xl border border-navy-100 px-4 py-2.5 font-normal" /></label>
+
+        <div class="rounded-xl border border-navy-100 p-4">
+          <p class="text-sm font-medium">Imagen</p>
+          <img id="preview" alt="" class="mt-3 hidden h-32 w-full rounded-lg object-cover" />
+          <input id="archivo" type="file" accept="image/jpeg,image/png,image/webp" class="mt-3 block w-full text-sm" />
+          <p class="mt-1 text-xs text-navy-800/70">JPG, PNG o WebP, máximo 3 MB. Si no subes archivo, se conserva la imagen actual.</p>
+          <input name="imagen_url" type="url" placeholder="…o pega una URL https://" class="mt-3 w-full rounded-xl border border-navy-100 px-4 py-2.5 text-sm" />
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-3">
+          <label class="block text-sm font-medium">Orden
+            <input name="orden" type="number" value="0" class="mt-1 w-full rounded-xl border border-navy-100 px-4 py-2.5 font-normal" /></label>
+          <label class="block text-sm font-medium sm:col-span-2">Vigente hasta
+            <input name="vigente_hasta" type="date" class="mt-1 w-full rounded-xl border border-navy-100 px-4 py-2.5 font-normal" /></label>
+        </div>
+        <div class="flex gap-6 text-sm">
+          <label class="flex items-center gap-2"><input name="activa" type="checkbox" checked /> Publicada</label>
+          <label class="flex items-center gap-2"><input name="destacada" type="checkbox" /> Destacada</label>
+        </div>
+
+        <p id="form-error" class="text-sm text-red-700" role="alert"></p>
+        <div class="flex justify-end gap-3 pt-2">
+          <button type="button" id="btn-cancelar" class="rounded-full border border-navy-100 px-5 py-2.5 text-sm font-medium">Cancelar</button>
+          <button id="btn-guardar" class="rounded-full bg-navy-900 px-6 py-2.5 text-sm font-semibold text-white hover:bg-navy-800">Guardar</button>
+        </div>
+      </form>
+    </dialog>
+  </div>
+
+  <script>
+    /* Mismos valores que index.html. Solo la clave anon/publishable; NUNCA service_role. */
+    const CONFIG = { SUPABASE_URL: "https://skuvuttaqocdgdxvtule.supabase.co", SUPABASE_ANON_KEY: "sb_publishable_ox1ZM4qIps-PdybnajS-Ng_oXBCHub3" };
+    const BUCKET = "ofertas", MAX_MB = 3;
+
+    const sb = supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_ANON_KEY);
+    const $ = (s) => document.querySelector(s);
+    let tab = "ofertas", cache = [];
+
+    function el(tag, cls, text) { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+    function aviso(msg, error) { const a = $("#aviso"); a.textContent = msg || ""; a.className = "mt-4 text-sm " + (error ? "text-red-700" : "text-navy-800/80"); }
+    function btn(txt, cls, fn) { const b = el("button", "rounded-full border px-3 py-1.5 text-xs font-medium " + cls, txt); b.type = "button"; b.addEventListener("click", fn); return b; }
+    function chip(txt, cls) { return el("span", "rounded-full px-2.5 py-0.5 text-xs font-medium " + cls, txt); }
+    const hoy = () => new Date().toISOString().slice(0, 10);
+
+    /* ---------- Sesión ---------- */
+    async function render() {
+      const { data: { session } } = await sb.auth.getSession();
+      $("#vista-login").classList.toggle("hidden", !!session);
+      $("#vista-login").classList.toggle("flex", !session);
+      $("#vista-app").classList.toggle("hidden", !session);
+      if (session) { $("#usuario").textContent = session.user.email; cambiarTab(tab); }
+    }
+    $("#form-login").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      $("#login-error").textContent = "";
+      const { error } = await sb.auth.signInWithPassword({ email: $("#l-email").value.trim(), password: $("#l-pass").value });
+      if (error) $("#login-error").textContent = "Correo o contraseña incorrectos.";
+      else render();
+    });
+    $("#btn-salir").addEventListener("click", async () => { await sb.auth.signOut(); render(); });
+
+    /* ---------- Tabs ---------- */
+    document.querySelectorAll(".tab").forEach((b) => b.addEventListener("click", () => cambiarTab(b.dataset.tab)));
+    function cambiarTab(t) {
+      tab = t;
+      document.querySelectorAll(".tab").forEach((b) => {
+        b.className = "tab rounded-full px-4 py-2 text-sm font-medium " + (b.dataset.tab === t ? "bg-navy-900 text-white" : "bg-white text-navy-800 border border-navy-100");
+      });
+      $("#btn-nueva").classList.toggle("hidden", t !== "ofertas");
+      t === "ofertas" ? cargarOfertas() : cargarSolicitudes();
+    }
+
+    /* ---------- Ofertas ---------- */
+    async function cargarOfertas() {
+      aviso("Cargando…");
+      const { data, error } = await sb.from("ofertas").select("*").order("orden").order("created_at", { ascending: false });
+      if (error) return aviso("No se pudieron cargar las ofertas: " + error.message, true);
+      cache = data; aviso(data.length ? "" : "Aún no hay ofertas. Crea la primera con “Nueva oferta”.");
+      $("#cats").replaceChildren(...[...new Set(data.map((o) => o.categoria))].map((c) => { const op = el("option"); op.value = c; return op; }));
+      $("#lista").replaceChildren(...data.map(filaOferta));
+    }
+
+    function filaOferta(o) {
+      const fila = el("article", "flex flex-col gap-4 rounded-2xl border border-navy-100 bg-white p-4 sm:flex-row sm:items-center");
+      const img = el("img", "h-20 w-full rounded-lg bg-navy-50 object-cover sm:w-28");
+      img.src = o.imagen_url || "https://placehold.co/300x200/E6ECF7/16306A?text=Sin+imagen"; img.alt = "";
+      const info = el("div", "min-w-0 flex-1");
+      info.append(el("p", "font-display text-lg font-semibold text-navy-900", o.titulo));
+      info.append(el("p", "text-sm text-navy-800/70", `${o.categoria} · ${o.destino}` + (o.precio_desde != null ? ` · desde ${o.moneda} ${o.precio_desde}` : "")));
+      const tags = el("div", "mt-2 flex flex-wrap gap-2");
+      const vencida = o.vigente_hasta && o.vigente_hasta < hoy();
+      tags.append(chip(o.activa ? "Publicada" : "Oculta", o.activa ? "bg-green-100 text-green-800" : "bg-navy-100 text-navy-800"));
+      if (o.destacada) tags.append(chip("Destacada", "bg-gold/30 text-navy-950"));
+      if (vencida) tags.append(chip("Vencida", "bg-red-100 text-red-800"));
+      else if (o.vigente_hasta) tags.append(chip("Hasta " + o.vigente_hasta, "bg-navy-50 text-navy-800"));
+      info.append(tags);
+      const acc = el("div", "flex flex-wrap gap-2");
+      acc.append(btn("Editar", "border-navy-100 hover:border-navy-800", () => abrirForm(o)));
+      acc.append(btn(o.activa ? "Ocultar" : "Publicar", "border-navy-100 hover:border-navy-800", () => actualizar(o.id, { activa: !o.activa })));
+      acc.append(btn("Eliminar", "border-red-200 text-red-700 hover:bg-red-50", () => eliminar(o)));
+      fila.append(img, info, acc);
+      return fila;
+    }
+
+    async function actualizar(id, cambios) {
+      const { error } = await sb.from("ofertas").update(cambios).eq("id", id);
+      error ? aviso("Error: " + error.message, true) : cargarOfertas();
+    }
+    async function eliminar(o) {
+      if (!confirm(`¿Eliminar “${o.titulo}”? Esta acción no se puede deshacer.\n(Si solo quieres quitarla de la web, usa “Ocultar”.)`)) return;
+      const { error } = await sb.from("ofertas").delete().eq("id", o.id);
+      error ? aviso("Error: " + error.message, true) : cargarOfertas();
+    }
+
+    /* ---------- Formulario ---------- */
+    const dlg = $("#dlg"), form = $("#form-oferta");
+    function abrirForm(o) {
+      form.reset(); $("#form-error").textContent = ""; $("#archivo").value = "";
+      $("#dlg-titulo").textContent = o ? "Editar oferta" : "Nueva oferta";
+      const f = form.elements;
+      f.id.value = o?.id || "";
+      if (o) {
+        ["titulo","destino","categoria","descripcion","moneda","duracion","imagen_url","orden","vigente_hasta"].forEach((k) => f[k].value = o[k] ?? "");
+        f.precio_desde.value = o.precio_desde ?? "";
+        f.incluye.value = (o.incluye || []).join(", ");
+        f.activa.checked = o.activa; f.destacada.checked = o.destacada;
+      }
+      mostrarPreview(o?.imagen_url);
+      dlg.showModal();
+    }
+    function mostrarPreview(src) { const p = $("#preview"); p.src = src || ""; p.classList.toggle("hidden", !src); }
+    $("#btn-nueva").addEventListener("click", () => abrirForm(null));
+    $("#btn-cancelar").addEventListener("click", () => dlg.close());
+    $("#archivo").addEventListener("change", (e) => { const a = e.target.files[0]; if (a) mostrarPreview(URL.createObjectURL(a)); });
+
+    async function subirImagen(archivo) {
+      if (!["image/jpeg","image/png","image/webp"].includes(archivo.type)) throw new Error("Formato de imagen no permitido.");
+      if (archivo.size > MAX_MB * 1024 * 1024) throw new Error(`La imagen supera ${MAX_MB} MB.`);
+      const ext = { "image/jpeg":"jpg", "image/png":"png", "image/webp":"webp" }[archivo.type];
+      const ruta = `${crypto.randomUUID()}.${ext}`;
+      const { error } = await sb.storage.from(BUCKET).upload(ruta, archivo, { contentType: archivo.type, cacheControl: "31536000" });
+      if (error) throw error;
+      return sb.storage.from(BUCKET).getPublicUrl(ruta).data.publicUrl;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const f = form.elements, err = $("#form-error"), guardar = $("#btn-guardar");
+      err.textContent = ""; guardar.disabled = true; guardar.textContent = "Guardando…";
+      try {
+        let imagen = f.imagen_url.value.trim() || null;
+        if (imagen && !/^https:\/\//i.test(imagen)) throw new Error("La URL de la imagen debe empezar con https://");
+        const archivo = $("#archivo").files[0];
+        if (archivo) imagen = await subirImagen(archivo);
+        const payload = {
+          titulo: f.titulo.value.trim(), destino: f.destino.value.trim(), categoria: f.categoria.value.trim(),
+          descripcion: f.descripcion.value.trim(),
+          precio_desde: f.precio_desde.value === "" ? null : Number(f.precio_desde.value),
+          moneda: f.moneda.value, duracion: f.duracion.value.trim() || null,
+          incluye: f.incluye.value.split(",").map((s) => s.trim()).filter(Boolean),
+          imagen_url: imagen, orden: parseInt(f.orden.value, 10) || 0,
+          vigente_hasta: f.vigente_hasta.value || null,
+          activa: f.activa.checked, destacada: f.destacada.checked
+        };
+        const q = f.id.value ? sb.from("ofertas").update(payload).eq("id", f.id.value) : sb.from("ofertas").insert(payload);
+        const { error } = await q;
+        if (error) throw error;
+        dlg.close(); cargarOfertas();
+      } catch (ex) { err.textContent = ex.message || "No se pudo guardar."; }
+      finally { guardar.disabled = false; guardar.textContent = "Guardar"; }
+    });
+
+    /* ---------- Solicitudes ---------- */
+    async function cargarSolicitudes() {
+      aviso("Cargando…");
+      const { data, error } = await sb.from("solicitudes").select("*").order("atendida").order("created_at", { ascending: false }).limit(200);
+      if (error) return aviso("No se pudieron cargar las solicitudes: " + error.message, true);
+      aviso(data.length ? "" : "Todavía no hay solicitudes.");
+      $("#lista").replaceChildren(...data.map((s) => {
+        const c = el("article", "rounded-2xl border border-navy-100 bg-white p-5 " + (s.atendida ? "opacity-60" : ""));
+        const top = el("div", "flex flex-wrap items-center justify-between gap-2");
+        top.append(el("p", "font-semibold text-navy-900", s.nombre));
+        top.append(el("p", "text-xs text-navy-800/60", new Date(s.created_at).toLocaleString("es-GT")));
+        const mail = el("a", "text-sm text-navy-800 underline", s.correo); mail.href = "mailto:" + encodeURIComponent(s.correo).replace("%40", "@");
+        const pie = el("div", "mt-3");
+        pie.append(btn(s.atendida ? "Marcar pendiente" : "Marcar atendida", "border-navy-100 hover:border-navy-800", async () => {
+          const { error } = await sb.from("solicitudes").update({ atendida: !s.atendida }).eq("id", s.id);
+          error ? aviso("Error: " + error.message, true) : cargarSolicitudes();
+        }));
+        c.append(top, mail, el("p", "mt-2 whitespace-pre-line text-sm text-navy-800/90", s.mensaje), pie);
+        return c;
+      }));
+    }
+
+    sb.auth.onAuthStateChange((ev) => { if (ev === "SIGNED_OUT") render(); });
+    render();
+  </script>
+</body>
+</html>
