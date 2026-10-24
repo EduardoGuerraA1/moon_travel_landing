@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moon Travel | Viajes premium sin complicaciones</title>
-  <meta name="description" content="Moon Travel te ayuda a planear vuelos, hoteles y paquetes todo incluido con atención personalizada." />
+  <title>Nova Viventia Travel | Viajes premium sin complicaciones</title>
+  <meta name="description" content="Nova Viventia Travel te ayuda a planear vuelos, hoteles y paquetes todo incluido con atención personalizada." />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -31,10 +31,9 @@
   <!-- NAV -->
   <header class="fixed inset-x-0 top-0 z-50 border-b border-navy-100 bg-white/90 backdrop-blur-md">
     <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8" aria-label="Principal">
-      <a href="#inicio" class="flex items-center gap-2 rounded font-display text-xl font-semibold tracking-tight text-navy-900 sm:text-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800">
-        <!-- Logo: coloca tu archivo en assets/logo.png (si no existe, solo se ve el texto) -->
-        <img src="assets/logo.png" alt="" class="h-8 w-auto" onerror="this.remove()" />
-        Moon Travel
+      <a href="#inicio" class="flex items-center gap-2 rounded font-display text-lg font-semibold tracking-tight text-navy-900 sm:text-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800">
+        <img src="assets/logo-icon.jpg" alt="" class="h-10 w-10 rounded-lg" onerror="this.remove()" />
+        <span>Nova Viventia <span class="hidden font-normal text-navy-800/60 sm:inline">Travel</span></span>
       </a>
       <div class="hidden items-center gap-8 text-sm font-medium text-navy-800 md:flex">
         <a href="#servicios" class="transition hover:text-navy-900">Servicios</a>
@@ -42,7 +41,7 @@
         <a href="#por-que" class="transition hover:text-navy-900">¿Por qué elegirnos?</a>
         <a href="#contacto" class="transition hover:text-navy-900">Contacto</a>
       </div>
-      <a data-wa="Hola Moon Travel, quiero información sobre un viaje" href="#" target="_blank" rel="noopener"
+      <a data-wa="Hola Nova Viventia Travel, quiero información sobre un viaje" href="#" target="_blank" rel="noopener"
          class="inline-flex items-center rounded-full bg-navy-900 px-5 py-2 text-sm font-medium text-white transition hover:bg-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800">
         Contáctanos
       </a>
@@ -191,8 +190,9 @@
   <footer class="bg-navy-950 text-navy-100">
     <div class="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:px-8 md:grid-cols-3 md:items-center">
       <div>
-        <p class="font-display text-xl font-semibold text-white">Moon Travel</p>
-        <p class="mt-2 text-sm text-navy-100/70">Viajes premium, sin complicaciones.</p>
+        <img src="assets/logo.jpg" alt="Nova Viventia Travel" class="h-24 w-24 rounded-2xl" onerror="this.remove()" />
+        <p class="mt-4 font-display text-xl font-semibold text-white">Nova Viventia Travel</p>
+        <p class="mt-1 text-sm text-navy-100/70">El mundo, a tu medida.</p>
         <p class="mt-1 text-sm text-navy-100/70">Operando en afiliación con Kultur Travel.</p>
       </div>
       <div class="text-sm">
@@ -205,14 +205,14 @@
       </ul>
     </div>
     <div class="border-t border-white/10">
-      <p class="mx-auto max-w-6xl px-5 py-5 text-xs text-navy-100/60 sm:px-8">© <span id="year">2026</span> Moon Travel. Todos los derechos reservados.</p>
+      <p class="mx-auto max-w-6xl px-5 py-5 text-xs text-navy-100/60 sm:px-8">© <span id="year">2026</span> Nova Viventia Travel. Todos los derechos reservados.</p>
     </div>
   </footer>
 
   <script>
     /* ============ CONFIGURACIÓN ============ */
     const CONFIG = {
-      SUPABASE_URL: "https://skuvuttaqocdgdxvtule.supabase.co",        // ej: https://xxxx.supabase.co
+      SUPABASE_URL: "https://skuvuttaqocdgdxvtule.supabase.co",   
       SUPABASE_ANON_KEY: "sb_publishable_ox1ZM4qIps-PdybnajS-Ng_oXBCHub3",
       WHATSAPP: "50200000000"  // código de país + número, sin signos
     };
@@ -269,7 +269,7 @@
       const card = el("article", "flex flex-col overflow-hidden rounded-3xl border border-navy-100 bg-white shadow-sm");
       const media = el("div", "relative");
       const img = el("img", "h-60 w-full object-cover bg-navy-50");
-      img.src = urlSegura(o.imagen_url) || "https://placehold.co/900x600/E6ECF7/16306A?text=Moon+Travel";
+      img.src = urlSegura(o.imagen_url) || "https://placehold.co/900x600/E6ECF7/16306A?text=Nova+Viventia";
       img.alt = `${o.destino}: ${o.titulo}`;
       img.loading = "lazy";
       media.append(img);
@@ -279,7 +279,8 @@
       const body = el("div", "flex flex-1 flex-col p-6");
       body.append(el("p", "text-sm font-medium text-gold", o.categoria));
       body.append(el("h3", "mt-2 font-display text-2xl font-semibold text-navy-900", o.titulo));
-      const meta = [o.destino, o.duracion].filter(Boolean).join(" · ");
+      const personas = o.personas ? `Para ${o.personas} ${o.personas === 1 ? "persona" : "personas"}` : null;
+      const meta = [o.destino, o.duracion, personas].filter(Boolean).join(" · ");
       if (meta) body.append(el("p", "mt-1 text-sm text-navy-800/70", meta));
       body.append(el("p", "mt-3 leading-relaxed text-navy-800/80", o.descripcion));
 
@@ -297,7 +298,7 @@
       pie.append(bloque);
 
       const btn = el("a", "inline-flex items-center rounded-full bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-800", "Cotizar este viaje");
-      btn.href = waLink(`Hola Moon Travel, quiero cotizar: ${o.titulo} (${o.destino}).`);
+      btn.href = waLink(`Hola Nova Viventia Travel, quiero cotizar: ${o.titulo} (${o.destino}).`);
       btn.target = "_blank"; btn.rel = "noopener";
       pie.append(btn);
       body.append(pie);
@@ -353,7 +354,7 @@
         } catch (err) { console.error(err); }
       }
       // 2) Abrir WhatsApp con el mensaje armado
-      window.open(waLink(`Hola Moon Travel, soy ${datos.nombre} (${datos.correo}). ${datos.mensaje}`), "_blank", "noopener");
+      window.open(waLink(`Hola Nova Viventia Travel, soy ${datos.nombre} (${datos.correo}). ${datos.mensaje}`), "_blank", "noopener");
       estado.textContent = "¡Gracias! Te contactaremos pronto.";
       f.reset(); btn.disabled = false;
     });
